@@ -12,6 +12,12 @@
         <input type="submit" name="submit" value="Submit">
     </form>
 
+    <form action="view_details.php" method="get">
+    <input type="submit"  value="View Records">
+
+</for>
+    <!-- Add a button that goes to the next page which displays the records. -->
+
     <?php
     if (isset($_POST['submit'])) {
         $name = $_POST['name'];
@@ -23,10 +29,9 @@
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
         }
-      $sql="INSERT INTO students(name,usn,phone)
-      VALUES('$name','$usn','$phone')";
+
         // Insert data
-        // Write the SQL required to insert the data into the table
+        $sql = "INSERT INTO students (name, usn, phone) VALUES ('$name', '$usn', '$phone')";
         if ($conn->query($sql) === TRUE) {
             echo "New record created successfully";
         } else {
